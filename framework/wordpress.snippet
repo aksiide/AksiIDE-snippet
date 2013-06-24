@@ -1,4 +1,47 @@
 <?php
-//-- Hellowww
-		echo 'helloww AksiIDE'
+//-- antispambot
+echo antispambot("johndoe@mysite.com");
 
+//-- content: add content to every post
+function add_post_content($content) {
+	if(!is_feed() && !is_home()) {
+		$content .= '<p>copyright '.date('Y').'</p>';
+		%|%
+	}
+	return $content;
+}
+add_filter('the_content', 'add_post_content');
+
+//-- "Enter Title Here" placeholder
+function change_default_title( $title ){
+	$screen = get_current_screen();
+	if  ( '_your_custom_post_type_' == $screen->post_type ) {
+		$title = 'The new title';
+	}
+	return $title;
+}
+ 
+add_filter( 'enter_title_here', 'change_default_title' );
+
+//-- is plugin active
+// Include if use on the frontend, not needed in the admin
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	
+if (is_plugin_active('plugin-directory/plugin-file.php')) {
+	//plugin is activated
+	%|%
+}
+
+//-- date with wordpress default format
+$lsDate = date( get_option('date_format'), strtotime( $date ) );
+
+//-- get user id
+$my_user = ''; // can be $_GET['user'] or query_vars
+$user = get_user_by('login', $my_user );
+$user_id = $user->ID;
+
+//-- get media url
+wp_get_attachment_url( $id );
+
+//-- humantime
+echo human_time_diff(get_the_time('U'), current_time('timestamp')).' ago';
