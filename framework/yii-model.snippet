@@ -1,0 +1,17 @@
+<?php
+
+//-- model: before save
+public function beforeSave() {
+	if(parent::beforeSave()){
+		if ($this->isNewRecord) {
+			$this->creatd_on = date("Y-m-d H:i:s", time());
+			$this->modified_on = $this->creatd_on;
+			$this->author_id = Yum::app()->user->id;
+		} else {
+			$this->modified_on = date("Y-m-d H:i:s", time());
+		}
+		return true;
+	} else  {
+		return false;
+	}
+}
