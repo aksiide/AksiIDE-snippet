@@ -1,11 +1,34 @@
 <?php
+//-- css & js register
+$baseUrl = Yii::app()->baseUrl; 
+$script = Yii::app()->getClientScript();
+$script->registerScriptFile($baseUrl.'/js/yourscript.js');
+$script->registerCssFile($baseUrl.'/css/yourcss.css');
+
 //-- homeurl
 Yii::app()->homeUrl
+
+//-- html: dropdownlist
+CHtml::activeDropDownList(
+	$model,
+	'agent_voice',
+	CHtml::listData( Agent::model()->findAll(), 'agent_id', 'name'),
+	array( 'empty'=>'Choose Agent').
+);
+
 //-- system: redirect
 $this->redirect(%|%)
 
+//-- other: unregister all client scripts
+Yii::app()->clientScript->reset();
+
 //-- user: logout
 Yii::app()->user->logout();%|%
+
+//-- model: number of record
+$count = User::model()->count( 
+    'user_id=:id', array('id' => $id)
+);
 
 //-- view: render
 $this->render( %|%, );
