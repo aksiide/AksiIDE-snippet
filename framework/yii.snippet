@@ -1,0 +1,86 @@
+<?php
+//-- homeurl
+Yii::app()->homeUrl
+//-- system: redirect
+$this->redirect(%|%)
+
+//-- user: logout
+Yii::app()->user->logout();%|%
+
+//-- view: render
+$this->render( %|%, );
+
+//-- widget: form
+
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'your-form',
+	'enableClientValidation'=>true,
+	'clientOptions'=>array(
+		'validateOnSubmit'=>true,
+	),
+)); ?>
+
+// your code
+	%|%
+
+<?php $this->endWidget(); ?>
+
+//-- widget: captcha
+
+	<?php if(CCaptcha::checkRequirements()): ?>
+	<div class="row">
+		<?php echo $form->labelEx($model,'verifyCode'); ?>
+		<div>
+		<?php $this->widget('CCaptcha'); ?>
+		<?php echo $form->textField($model,'verifyCode'); ?>
+		</div>
+		<div class="hint">Please enter the letters as they are shown in the image above.
+		<br/>Letters are not case-sensitive.</div>
+		<?php echo $form->error($model,'verifyCode'); ?>
+	</div>
+	<?php endif; ?>
+
+//-- view: pages
+$this->pageTitle=Yii::app()->name . ' - Your Page Name';
+$this->breadcrumbs=array(
+	'Your Page Name',
+);
+?>
+<h1>Your Page Name</h1>
+%|%
+
+//-- widget: TabView
+	$this->widget('CTabView', array(
+	'tabs'=>array(
+		'tab1'=>array(
+				'title'=>'tab 1 title',
+				'view'=>'view1',
+				'data'=>array('model'=>$model),
+		),
+		'tab2'=>array(
+				'title'=>'tab 2 title',
+				'url'=>'http://test.aksiide.com/',
+		),
+	),
+	));
+
+//-- widget: class skeleton
+class CTabView extends CWidget {
+	const CSS_CLASS='theTab';
+	public $cssFile;
+
+	public function run() {
+		// your code
+		%|%
+		
+		$this->renderHeader();
+		$this->renderBody();
+	}
+	
+	protected function renderHeader() {
+		echo "This is Header";
+	}
+	protected function renderBody() {
+		echo "This is Body";
+	}
+}

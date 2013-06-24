@@ -1,0 +1,107 @@
+<?php
+//-- DB: Get DBObject
+		$loObject = new %modulename%_DBObject_%YourObjectName%( null, "id");
+
+		$data = $loObject->get( $where, $sort, $startnum, $pagesize);
+		//$liID = $loObject->getID();
+		//$lsS = $loObject->getIDField();
+		|
+
+//-- DB: Insert Object
+		$laData = array(
+			"update_date"    => $now,
+			"update_by"      => $uid,
+			"status_id"      => 0,
+		);
+		$laResult = DBUtil::insertObject( $laData, 'your_table_name', 'id');
+
+//-- DB: Update Object
+    $laData = array(
+    	"id" => $lsSessionId,
+      "update_by" => 0,
+      "update_date" => $now,
+      "status_id" => 1
+    );
+    $laResult = DBUtil::updateObject( $laData, 'your_table_name', "id");
+		
+		
+//-- DB: Push&Pop
+		$this->oDBConn = DBConnectionStack::init( "%|%%dbid%"); // default: 'default'
+
+		DBConnectionStack::popConnectionForce( true);
+
+
+//-- DB: SQL Exec
+		$lsSQL = "%|%";
+		$loResult = DBUtil::executeSQL( $lsSQL);
+		$laData = DBUtil::marshallObjects( $loResult);
+
+//-- Permission: Check Permission
+		if ( !SecurityUtil::checkPermission( '%modulename%::', '::', ACCESS_ADD)) {
+			return LogUtil::registerPermissionError( ModUtil::url( '%modulename%', 'user', 'main'));
+		}
+
+//-- Constanta
+		$lsVariable = %modulename%_Constant::VariableName;
+		
+//-- Exception: throw forbidden
+		throw new Zikula_Exception_Forbidden( LogUtil::getErrorMsgPermission());
+		
+//-- Get BaseURL
+		System::getBaseURL()
+
+//-- Get DateTime
+		DateUtil::getDatetime()
+
+//-- Get Passed Value
+		$psS = FormUtil::getPassedValue( 'variablename', null, "GETPOST", FILTER_SANITIZE_STRING); 
+
+//-- Get UserID
+		$liUID = UserUtil::getVar( 'uid');
+
+//-- Get Username
+		$lsUname = UserUtil::getVar( 'uname');
+		
+//-- Message: Info Message
+		LogUtil::registerStatus( $this->__( 'Your Messages'));
+
+//-- Message: Error Message
+		LogUtil::registerError( $this->__( 'Your Messages'));
+
+//-- System: Redirect URL
+		$this->redirect( $lsURL);
+
+//-- View: Fetch
+		$lsHTML = $this->view->fetch( "directory/filename.tpl");
+
+//-- View: Assign
+		$this->view->assign( 'sVariable', $lsVariable);
+
+//-- View: Form
+		$form = FormUtil::newForm( '%modulename%', $this);
+		$form->assign( 'sVariable', $lsYourVariable);
+		return $form->execute( 'directory/filename.tpl', new %modulename%_Handler_YourFunction());
+
+//-- URL: generate url
+		$lsURL = ModUtil::url('%modulename%', 'user','yourfunction', array( "item" => 0 ));
+		
+//-- Smarty: foreach
+	{foreach from=$aObjects item='aObject'}
+		%|%
+	{/foreach}
+
+//-- Smarty: assign
+	{assign var='lsVariableName' value='the value'}
+
+//-- Smarty: pageaddvar css
+	{pageaddvar name="stylesheet" value="modules/%modulename%/templates/style.css"}
+
+//-- Smarty: insert status message
+	{insert name='getstatusmsg'}
+	
+//-- Smarty: truncate
+	nl2br|truncatehtml:200
+
+//-- Smarty: date format human
+	dateformatHuman:'%d %b %Y'
+	
