@@ -1,0 +1,24 @@
+<?php
+
+//-- form: dropdown
+$aOptions = array(
+	"-1" => "Select Option",
+	"o1" => "Option 1",
+	"o2" => "Option 2"
+);
+echo form_dropdown('reg_option', $aOptions, '-1'); 
+
+
+//-- url: self url
+function self_url(){
+	return get_instance()->uri->ruri_string();
+}
+
+//-- url: refresh
+function refresh() {
+	redirect(self_url());
+}
+
+//-- url: redirect
+redirect(self_url());
+
