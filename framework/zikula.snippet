@@ -85,23 +85,3 @@
 //-- URL: generate url
 		$lsURL = ModUtil::url('%modulename%', 'user','yourfunction', array( "item" => 0 ));
 		
-//-- Smarty: foreach
-	{foreach from=$aObjects item='aObject'}
-		%|%
-	{/foreach}
-
-//-- Smarty: assign
-	{assign var='lsVariableName' value='the value'}
-
-//-- Smarty: pageaddvar css
-	{pageaddvar name="stylesheet" value="modules/%modulename%/templates/style.css"}
-
-//-- Smarty: insert status message
-	{insert name='getstatusmsg'}
-	
-//-- Smarty: truncate
-	nl2br|truncatehtml:200
-
-//-- Smarty: date format human
-	dateformatHuman:'%d %b %Y'
-	
