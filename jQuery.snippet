@@ -1,0 +1,42 @@
+<?php
+
+//-- onDocumentReady
+<script type="text/javascript">
+jQuery(document).ready(function() {    
+	%|%
+});
+</script>
+
+//-- onChange
+	jQuery('#yourid').change(function(){
+		%|%
+	});
+
+//-- Load and execute a JavaScript file.
+	$.ajax({
+		type: "GET",
+		url: "test.js",
+		dataType: "script"
+	});
+
+//-- ajax call (json)
+	var request = jQuery.ajax({
+		url: 'http://localhost',
+		type: "GET",
+		data: {id : menuId},
+		dataType: "json"
+	});
+
+	request.done(function(msg) {
+  	alert( msg.data);
+		//jQuery("#log").html( msg );
+	});
+
+	request.fail(function(jqXHR, textStatus) {
+		alert( "Request failed: " + textStatus );
+	});
+
+//-- each
+    jQuery.each( VarArray, function(index, value) {
+			%|%
+    });
