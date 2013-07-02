@@ -62,6 +62,13 @@
 //-- Get Username
 		$lsUname = UserUtil::getVar( 'uname');
 		
+//-- Handler: getFormValue
+  //usage: if boolean --> $varname = (bool)$this->getFormValue('YesNo', false);
+  private function getFormValue($key, $default){
+  	return isset($this->formValues[$key]) ? $this->formValues[$key] : $default;
+		// $psVariabel = FormUtil::getPassedValue('namavariabel', null, 'GETPOST', FILTER_SANITIZE_STRING);
+  }
+		
 //-- Message: Info Message
 		LogUtil::registerStatus( $this->__( 'Your Messages'));
 
