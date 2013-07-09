@@ -1,11 +1,19 @@
 <?php
+
+//-- Categori: Add
+	// add entries to category registry
+	$rootcat = CategoryUtil::getCategoryByPath('/__SYSTEM__/Modules/Global');
+	CategoryRegistryUtil::insertEntry('%module.name%', 'SubCategory01', 'Main', $rootcat['id']);
+	CategoryRegistryUtil::insertEntry('%module.name%', 'SubCategory02', 'Main', $rootcat['id']);
+
+
 //-- DB: Get DBObject
 		$loObject = new %modulename%_DBObject_%YourObjectName%( null, "id");
 
-		$data = $loObject->get( $where, $sort, $startnum, $pagesize);
+		$laResult = $loObject->get( $where, $sort, $startnum, $pagesize);
 		//$liID = $loObject->getID();
 		//$lsS = $loObject->getIDField();
-		|
+		%|%
 
 //-- DB: Insert Object
 		$laData = array(
@@ -22,7 +30,7 @@
       "update_date" => $now,
       "status_id" => 1
     );
-    $laResult = DBUtil::updateObject( $laData, 'your_table_name', "id");
+    $laResult = DBUtil::updateObject( $laData, 'your_table_name', "", "id");
 		
 		
 //-- DB: Push&Pop
@@ -75,6 +83,17 @@
 //-- Message: Error Message
 		LogUtil::registerError( $this->__( 'Your Messages'));
 
+//-- Respon: Ajax Json
+		$laReturn = array(
+			"iErr" => 0,
+			"statusmsg" => "OK",
+			"debug" => "",
+			"data" => $laData,
+		);
+		$lsReturn = new Zikula_Response_Ajax_Json( $laReturn);
+		return $lsReturn;
+		
+		
 //-- System: Redirect URL
 		$this->redirect( $lsURL);
 
