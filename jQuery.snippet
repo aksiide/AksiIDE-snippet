@@ -7,8 +7,13 @@ jQuery(document).ready(function() {
 });
 </script>
 
+//-- onClick
+  jQuery( "#yourid").click( function() {
+		%|%
+	});
+
 //-- onChange
-	jQuery('#yourid').change(function(){
+	jQuery('#yourid').change( function(){
 		%|%
 	});
 
@@ -26,15 +31,14 @@ jQuery(document).ready(function() {
 		data: {id : menuId},
 		dataType: "json"
 	});
-
+	request.fail(function(jqXHR, textStatus) {
+		alert( "Request failed: " + textStatus );
+	});
 	request.done(function(msg) {
   	alert( msg.data);
 		//jQuery("#log").html( msg );
 	});
 
-	request.fail(function(jqXHR, textStatus) {
-		alert( "Request failed: " + textStatus );
-	});
 
 //-- each
     jQuery.each( VarArray, function(index, value) {
