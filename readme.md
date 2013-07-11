@@ -24,10 +24,16 @@ namafungsi %|%();
 Note:
 
 1. Tanda persen-pipa-persen **%|%** menandakan posisi kursor akan diletakkan
-2. Pastikan ada spasi pada baris pertama. Jika tidak, snippet pertama tidak digunakan
+2. Penulisan Snippet dimulai dari baris ke 2, baris ke 1 dicadangkan untuk keperluan pengembangan ke depan
 
 Lokasi folder snippet
 ---------------------
 
-Pada Windows full-installer, lokasi folder snippet ada di `%LocalAppData%\AksiIDE\data\autocomplete\snippet`
+Pada Windows full-installer, lokasi folder snippet ada di :
+`%LocalAppData%\AksiIDE\data\autocomplete\snippet`
+
+
+Pada versi portable, lokasi folder snippet ada di:
+`%AppDir%\data\autocomplete\snippet`
+
 
