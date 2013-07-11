@@ -1,3 +1,24 @@
 
-//-- select
-SELECT * FROM tablename
+//-- SELECT
+SELECT * FROM $table%|%;
+
+//-- SELECT WHERE
+SELECT * FROM $table%|% WHERE id = $id;
+
+//-- SELECT LIKE
+SELECT * FROM $table%|% WHERE $field LIKE '%$value%';
+
+//-- SELECT ORDER LIMIT
+SELECT * FROM $table%|% ORDER BY $field ASC LIMIT 10;
+
+//-- SELECT AGAINST MATCH BOOLEAN MODE
+SELECT * MATCH ($FTS_field%|%) AGAINST ('some words') IN BOOLEAN MODE;
+
+//-- INSERT
+INSERT INTO $table%|% ($field) VALUES ('$value');
+
+//-- UPDATE
+UPDATE $table%|% SET $field='$value' WHERE id = $id;
+
+//-- DELETE
+DELETE FROM $table%|% WHERE id = $id;
