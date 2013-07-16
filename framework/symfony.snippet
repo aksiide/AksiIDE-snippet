@@ -1,0 +1,11 @@
+<?php
+
+//-- requirement
+$symfonyRequirements = new SymfonyRequirements(); 
+
+//-- form.factory
+		$form = $this->get('form.factory')->create(new ContactType());
+		
+		%|%your code here
+		
+		return array('form' => $form->createView());

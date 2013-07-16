@@ -22,6 +22,7 @@
 			"status_id"      => 0,
 		);
 		$laResult = DBUtil::insertObject( $laData, 'your_table_name', 'id');
+		$liID = $laResult[ "id"];
 
 //-- DB: Update Object
     $laData = array(
@@ -55,6 +56,30 @@
 //-- Exception: throw forbidden
 		throw new Zikula_Exception_Forbidden( LogUtil::getErrorMsgPermission());
 		
+//-- Function -> create function
+	public function functionname( $args) {
+		global $Aksi;
+		if (!SecurityUtil::checkPermission( '%module.name%::', '::', ACCESS_READ)) {
+				return LogUtil::registerPermissionError(ModUtil::url( '%module.name%', 'user', 'functionname'));
+		}
+		$now = DateUtil::getDatetime();
+		$lsUserName = UserUtil::getVar( 'uname');
+		$liUID = UserUtil::getVar( 'uid');
+
+    $lsObject = FormUtil::getPassedValue( 'id', '', 'GETPOST', FILTER_SANITIZE_STRING);
+    $lsVariable = print_r( $_REQUEST, true);
+
+		// your code here
+		%|%
+		
+		$this->view->assign( 'date', $now);
+		$this->view->assign( 'uname', $lsUserName);
+		$this->view->assign( 'uid', $liUID);
+		$this->view->assign( 'variable', $lsVariable);
+		return $this->view->fetch( "user/file-template.tpl");
+	}
+
+
 //-- Get BaseURL
 		System::getBaseURL()
 
@@ -82,6 +107,13 @@
 
 //-- Message: Error Message
 		LogUtil::registerError( $this->__( 'Your Messages'));
+		
+//-- MetaTags : set
+		$sm = ServiceUtil::getManager();
+		$sm[ 'zikula_view.metatags'][ 'target_meta_tags'] = $value;
+		
+//-- PageUtil:setVar
+		PageUtil::setVar( 'title', 'your title');
 
 //-- Respon: Ajax Json
 		$laReturn = array(
