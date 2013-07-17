@@ -1,5 +1,10 @@
 <?php
 
+//-- Access: isLoggedin
+	if ((UserUtil::isLoggedIn())) {
+		%|%
+	}
+
 //-- Categori: Add
 	// add entries to category registry
 	$rootcat = CategoryUtil::getCategoryByPath('/__SYSTEM__/Modules/Global');
