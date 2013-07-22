@@ -130,6 +130,12 @@
 		$lsReturn = new Zikula_Response_Ajax_Json( $laReturn);
 		return $lsReturn;
 		
+//-- Session: Get Session
+	SessionUtil::getVar('variable');
+	
+//-- Session: Set Session
+	SessionUtil::setVar('variable', $sYourVariable);
+	
 		
 //-- System: Redirect URL
 		$this->redirect( $lsURL);
