@@ -1,5 +1,8 @@
 <?php
 
+//-- DB Use
+	$this->db
+	
 //-- form: dropdown
 $aOptions = array(
 	"-1" => "Select Option",
@@ -9,6 +12,15 @@ $aOptions = array(
 echo form_dropdown('reg_option', $aOptions, '-1'); 
 
 
+//-- Helper - Call
+	$this->load->helper('%|%',$data);
+	
+//-- Model - Call
+	$this->load->Model('%|%','nama');
+	
+//-- this
+	$this->
+	
 //-- url: self url
 function self_url(){
 	return get_instance()->uri->ruri_string();
@@ -22,3 +34,6 @@ function refresh() {
 //-- url: redirect
 redirect(self_url());
 
+//-- View - Call
+	$this->load->view('%|%',$data);
+	
