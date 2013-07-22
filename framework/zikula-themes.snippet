@@ -5,6 +5,17 @@
 		%|%
 	{/foreach}
 
+//-- Smarty: foreach-key
+	{foreach from=$aObjects key='lsKey' item='aObject'}
+		%|%
+	{/foreach}
+	
+//-- Smarty: icon
+	{icon type="add" size="extrasmall"}
+
+//-- Smarty: insert file
+{include file='folder/yourfile.tpl'}
+	
 //-- Smarty: assign
 	{assign var='lsVariableName' value='the value'}
 
