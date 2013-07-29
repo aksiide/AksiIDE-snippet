@@ -8,36 +8,36 @@ jQuery(document).ready(function() {
 </script>
 
 //-- onClick
-  jQuery( "#yourid").click( function() {
-		%|%
-	});
+		jQuery( "#yourid").click( function() {
+			%|%
+		});
 
 //-- onChange
-	jQuery('#yourid').change( function(){
-		%|%
-	});
+		jQuery('#yourid').change( function(){
+			%|%
+		});
 
 //-- Load and execute a JavaScript file.
-	$.ajax({
-		type: "GET",
-		url: "test.js",
-		dataType: "script"
-	});
+		$.ajax({
+			type: "GET",
+			url: "test.js",
+			dataType: "script"
+		});
 
 //-- ajax call (json)
-	var request = jQuery.ajax({
-		url: 'http://localhost',
-		type: "GET",
-		data: {id : menuId},
-		dataType: "json"
-	});
-	request.fail(function(jqXHR, textStatus) {
-		alert( "Request failed: " + textStatus );
-	});
-	request.done(function(msg) {
-  	alert( msg.data);
-		//jQuery("#log").html( msg );
-	});
+		var request = jQuery.ajax({
+			url: 'http://localhost',
+			type: "GET",
+			data: {id : menuId},
+			dataType: "json"
+		});
+		request.fail(function(jqXHR, textStatus) {
+			alert( "Request failed: " + textStatus );
+		});
+		request.done(function(msg) {
+			alert( msg.data);
+			//jQuery("#log").html( msg );
+		});
 
 
 //-- each
