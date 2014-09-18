@@ -1,0 +1,21 @@
+<?php
+
+//-- _init import
+from werkzeug.serving import run_simple
+from werkzeug.wrappers import Request, Response
+from werkzeug.wrappers import BaseRequest, BaseResponse
+
+//-- BaseResponse - html
+return BaseResponse('''
+<h1>This is Title</h1>
+Your html content
+''', mimetype='text/html')
+
+//-- BaseRequest
+req = BaseRequest(environ)
+	
+//-- run simple
+if __name__ == '__main__':
+	run_simple('localhost', 5000, application, use_debugger=True)
+
+ 

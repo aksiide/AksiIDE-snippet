@@ -1,0 +1,39 @@
+<?php
+		
+//-- mod: dateformatHuman
+|dateformatHuman:'%d %b %Y'
+
+//-- Smarty: foreach
+{foreach from=$aObjects item='aObject'}
+	%|%
+{/foreach}
+
+//-- Smarty: foreach-key
+{foreach from=$aObjects key='lsKey' item='aObject'}
+	%|%
+{/foreach}
+	
+//-- Smarty: icon
+{icon type="add" size="extrasmall"}
+
+//-- Smarty: insert file
+{include file='folder/yourfile.tpl'}
+	
+//-- Smarty: assign
+{assign var='lsVariableName' value='the value'}
+
+//-- Smarty: pageaddvar css
+{pageaddvar name="stylesheet" value="modules/%modulename%/templates/style.css"}
+
+//-- Smarty: insert status message
+{insert name='getstatusmsg'}
+	
+//-- Smarty: setmetatags
+{setmetatag name='title' value="Your Titles"}
+
+//-- Smarty: truncate
+nl2br|truncatehtml:200
+
+//-- Smarty: date format human
+dateformatHuman:'%d %b %Y'
+	

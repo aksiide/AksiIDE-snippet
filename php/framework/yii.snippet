@@ -47,19 +47,18 @@ $this->render( %|%, );
 <?php $this->endWidget(); ?>
 
 //-- widget: captcha
-
-	<?php if(CCaptcha::checkRequirements()): ?>
-	<div class="row">
-		<?php echo $form->labelEx($model,'verifyCode'); ?>
-		<div>
-		<?php $this->widget('CCaptcha'); ?>
-		<?php echo $form->textField($model,'verifyCode'); ?>
-		</div>
-		<div class="hint">Please enter the letters as they are shown in the image above.
-		<br/>Letters are not case-sensitive.</div>
-		<?php echo $form->error($model,'verifyCode'); ?>
+<?php if(CCaptcha::checkRequirements()): ?>
+<div class="row">
+	<?php echo $form->labelEx($model,'verifyCode'); ?>
+	<div>
+	<?php $this->widget('CCaptcha'); ?>
+	<?php echo $form->textField($model,'verifyCode'); ?>
 	</div>
-	<?php endif; ?>
+	<div class="hint">Please enter the letters as they are shown in the image above.
+	<br/>Letters are not case-sensitive.</div>
+	<?php echo $form->error($model,'verifyCode'); ?>
+</div>
+<?php endif; ?>
 
 //-- view: pages
 $this->pageTitle=Yii::app()->name . ' - Your Page Name';
@@ -71,19 +70,19 @@ $this->breadcrumbs=array(
 %|%
 
 //-- widget: TabView
-	$this->widget('CTabView', array(
-	'tabs'=>array(
-		'tab1'=>array(
-				'title'=>'tab 1 title',
-				'view'=>'view1',
-				'data'=>array('model'=>$model),
-		),
-		'tab2'=>array(
-				'title'=>'tab 2 title',
-				'url'=>'http://test.aksiide.com/',
-		),
+$this->widget('CTabView', array(
+'tabs'=>array(
+	'tab1'=>array(
+			'title'=>'tab 1 title',
+			'view'=>'view1',
+			'data'=>array('model'=>$model),
 	),
-	));
+	'tab2'=>array(
+			'title'=>'tab 2 title',
+			'url'=>'http://test.aksiide.com/',
+	),
+),
+));
 
 //-- widget: class skeleton
 class CTabView extends CWidget {

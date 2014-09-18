@@ -1,0 +1,57 @@
+<?php
+
+//-- DB Use
+$this->db
+	
+//-- form: dropdown
+$aOptions = array(
+	"-1" => "Select Option",
+	"o1" => "Option 1",
+	"o2" => "Option 2"
+);
+echo form_dropdown('reg_option', $aOptions, '-1'); 
+
+
+//-- Helper - Call
+$this->load->helper('%|%',$data);
+	
+//-- HTML: css
+$this->Html->css('%|%');
+
+//-- HTML: icon
+$this->Html->meta('icon');
+	
+//-- HTML: script
+$this->Html->script('%|%');
+
+//-- Layout: Set Layout
+$this->layout->setLayout( '%|%');
+	
+//-- Layout: Get BaseURL
+<?php echo base_url()?>
+
+//-- Layout: Load CSS
+<?php echo $this->layout->css();?>
+
+//-- Layout: Load JS
+<?php echo $this->layout->js();?>
+	
+//-- Model - Load
+	$this->load->model('%|%','nama');
+	
+//-- url: self url
+function self_url(){
+	return get_instance()->uri->ruri_string();
+}
+
+//-- url: refresh
+function refresh() {
+	redirect(self_url());
+}
+
+//-- url: redirect
+redirect(self_url());
+
+//-- View - Load
+$this->load->view('%|%',$data);
+	

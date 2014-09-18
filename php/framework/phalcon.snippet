@@ -1,0 +1,70 @@
+<?php
+
+//-- Call Controller
+$this->app->request(array(
+	'controller' => 'controller_name%|%',
+	'action' => 'action_name'
+));
+	
+//-- DB: Query
+$result = $this->db->query( $sql );
+$result->setFetchMode( Phalcon\ Db::FETCH_ASSOC );
+$aData = $result->fetchAll( );
+
+//-- DB: Query with Model Manager
+$sql = "SELECT field FROM table_name WHERE id=:id:";
+$result = $this->modelsManager->executeQuery( $sql, array( 'id' => $id ) );
+$aData = (array) $result[0];
+	
+//-- DB: Check count
+$count = $result->count( );
+
+//-- Model: Get config variable
+$var = $this->getDI()->get('config')->application['yourconfig'];
+
+//-- Model: Get DB Connection
+$db = $this->getDI()->get('db');
+
+//-- Model: Execute Query
+$db->execute( $phql, array('f1' => $this->field1, 'f2' => $this->field2));
+
+//-- get Action Name
+$_ActionName = $dispatcher->getActionName();
+	
+//-- get Controller Name
+$_ControllerName = $dispatcher->getControllerName();
+
+//-- message flash
+$this->flash->error((string) $message);
+	
+//-- redirect/forward
+return $this->_forward('url%|%');
+	
+//-- Request: Retrieve Get
+$var = $this->request->get("name", "string");
+	
+//-- Request: Retrieve POST
+$var = $this->request->getPost("name", "string");
+	
+//-- Request: isPost
+if ($this->request->isPost()) {%|%}
+	
+//-- Request: isGet
+if ($this->request->isGet()) {%|%}
+	
+//-- Response
+new Response('content%|%');
+	
+//-- Session: get session
+$var = $this->session->get('name%|%');
+
+//-- Session: get session id	
+$session_id = $this->session->getId();
+
+//-- System: Get Configuration
+$var = $this->config->application['yourconfig'];
+
+
+//-- View: Disable View
+$this->view->disable();
+	

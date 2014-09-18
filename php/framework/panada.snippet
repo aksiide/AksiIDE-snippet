@@ -1,0 +1,30 @@
+<?php
+
+//-- database: insert 
+$this->db->insert( $this->table, $aValue);
+$liID = $this->db->insertId();
+
+//-- database: delete
+$this->db->delete( $this->table, $aWhere);
+
+//-- database: update
+$this->db->update( $this->table,  $aValue, $aWhere);
+
+//-- database: query
+$laResult = $this->db->results( "SELECT field FROM table%|%");
+
+//-- database: query get 1 row
+$laResult = $this->db->row( "SELECT field FROM table WHERE id=1%|%");
+
+//-- session: get value
+$this->session->getValue('%|%');
+
+//-- session: set value
+$this->session->setValue('%|%');
+
+//-- parsing: get post data
+$lsValue =$this->post->post( 'variable', FILTER_SANITIZE_MAGIC_QUOTES );
+
+//-- uri: get base uri
+$lsURI = $this->uri->baseUri;
+
