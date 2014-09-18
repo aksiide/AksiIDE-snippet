@@ -1,0 +1,19 @@
+<?php
+
+//-- for
+for o, a in opts:
+	
+//-- threading try import
+try:
+	import threading
+except ImportError:
+	threading = None
+
+//-- try except
+try:
+	# your code
+except getopt.error, msg:
+	sys.stdout = sys.stderr
+	print msg
+	sys.exit(2)
+	
