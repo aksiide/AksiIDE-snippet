@@ -1,0 +1,10 @@
+<?php
+
+//-- html: dropdownlist
+CHtml::activeDropDownList(
+	$model,
+	'agent_voice',
+	CHtml::listData( Agent::model()->findAll(), 'agent_id', 'name'),
+	array( 'empty'=>'Choose Agent').
+);
+

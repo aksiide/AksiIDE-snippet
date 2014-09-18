@@ -1,0 +1,79 @@
+<?php
+
+//-- Base: Controller
+function YourController($scope, $http, $templateCache) {
+
+}
+
+//-- Bind: as html
+<div ng-bind-html="myHTML"></div>
+
+//-- HTTP: Call
+$scope.method = 'GET';
+$scope.url = 'http://yoururl';
+$scope.code = null;
+$scope.response = null;
+$http({method: $scope.method, url: $scope.url, cache: $templateCache).
+	success(function(data, status) {
+		$scope.status = status;
+		$scope.data = data;
+	}).
+	error(function(data, status) {
+		$scope.data = data || "Request failed";
+		$scope.status = status;
+});
+
+//-- HTTP: Call with header
+$scope.method = 'GET';
+$scope.url = 'http://yoururl';
+$scope.code = null;
+$scope.response = null;
+$http({method: $scope.method, url: $scope.url, cache: $templateCache, headers: {'Authorization': 'Token token=xxxxYYYYZzzz'}).
+	success(function(data, status) {
+		$scope.status = status;
+		$scope.data = data;
+	}).
+	error(function(data, status) {
+		$scope.data = data || "Request failed";
+		$scope.status = status;
+});
+
+//-- HTTP: Call GET - simple
+$http.get($scope.url).then(function(response) {
+
+	$raw_html = response.data;
+	
+});
+
+//-- HTTP: Post
+formdata = {
+	'var1' : 'value1', 
+	'var2' : 'value2'
+};
+formdata = $.param(formdata);
+$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+$http({method: 'POST', url: 'your_url', data: formdata, cache: $templateCache}).
+	success(function(data, status) {
+		alert(data);
+	}).
+	error(function(data, status) {
+	});
+
+//-- HTTP: Post 2
+var request = $http({
+		method: 'post',
+		url: 'your_url%|%',
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+		datax: "var1=value1&var2=value2",
+});
+
+request.success(
+	function( data) {
+		alert( data);
+	}
+);
+
+
+//-- View: Scroll to hash
+$location.hash('hashname%|%');
+$anchorScroll();

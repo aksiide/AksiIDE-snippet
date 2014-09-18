@@ -1,0 +1,86 @@
+<?php
+
+//-- Header: DocType
+$this->doctype();
+
+//-- Header: Embedding CSS
+$this->headLink()->appendStylesheet( $this->basePath(). '/ccsFile.css);
+
+//-- Header: MetaTags - Keyword
+$this->headMeta()->appendName('keywords', 'framework, PHP, productivity');
+
+//-- Header: Embedding JavaScript
+$this->headScript()->appendFile('/js.js', 'text/javascript', array('conditional' => 'lt IE 7'));
+		
+//-- Json Encode
+$this->json($this->data, array $params);
+
+//-- Message: Flash Message
+$this->flashMessenger()->addMessage('%|%');
+
+//-- Request and Response: Request
+$this->getRequest();            
+
+//-- Request and Response: Response
+$this->getResponse();
+
+//-- Request and Response: getURI
+$this->getRequest()->getUri();     //URI
+
+//-- Request and Response: getCookie
+$this->getRequest()->getCookie();  //Cookies
+
+//-- Request and Response: get from POST
+$this->params()->fromPost('foo');  //POST
+
+//-- Request and Response: get from GET
+$this->params()->fromQuery('foo'); //GET
+
+//-- Request and Response: get Uploaded File
+$this->params()->fromFiles('foo'); //Uploaded file
+ 
+//-- Request and Response: isPost
+$this->getRequest()->isPost();
+
+//-- Redirect: to Route
+$this->redirect()->toRoute('route',
+array('action' => 'name'), array('param => 1'));
+
+//-- Redirect: to URL
+$this->redirect()->toUrl('http://%|%');
+
+//-- Redirect: to 404 not found
+$this->getResponse()->setStatusCode(404);
+
+//-- Session: Init
+$session = new Zend\Session\Container('user');
+
+//-- Session: Get
+$lsVariable = $session->variable;
+
+//-- Session: Set
+$session->variable = '%|%';
+
+
+//-- View: Disable Layout
+$view = new ViewModel();
+$view->setTerminal(true);
+return $view;
+
+//-- View: Json Response
+$view = new JsonModel(
+	array('success' => '1','data'=>'foo'));
+return $response;
+
+//-- View: Set Template
+$view->setTemplate( '%|%templatename.phtml');
+
+//-- View: Set Template Different Layout
+$this->layout()->setTemplate('layout/new-layout');
+
+//-- View: Set Variable
+$view->setVariables( array( 'var' => 'foo'));
+
+//-- View: URL
+<a href="<?= $this->url('route', array('action' => 'ActionName', 'param' => 100)); ?>">Click</a>
+

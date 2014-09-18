@@ -1,0 +1,170 @@
+<?php
+
+//-- Component: Loading
+public $components = array('Session', 'Math');
+
+//-- Component: Creating Component
+/* using: $this->Math->doComplexOperation(1,2); */
+App::uses('Component', 'Controller');
+class MathComponent extends Component {
+    public function doComplexOperation($amount1, $amount2) {
+        return $amount1 + $amount2;
+    }
+}
+
+//-- Configuration: Write
+Configure::write( 'variable', 'value');
+
+//-- Configuration: Read
+$value = Configure::read( 'variable');
+
+//-- DB: Connection Manager
+$db =& ConnectionManager::getDataSource( 'default');
+
+//-- DB: ShowLog DB
+$db =& ConnectionManager::getDataSource( 'default');
+$db->showLog();
+
+//-- DB: find all
+$result = $this->YourModel->find( 'all', array(
+	'fields' => 'field1, field2',
+	'conditions' => array( 'fieldname' => 1),
+	'order' => array( 'id' => 'desc')
+));
+
+//-- DB: find join
+$joins = array(
+		'table' => 'second_table',
+		'alias' => 'GroupJoin',
+		'type' => 'LEFT',
+		'conditions' => array(
+				'FirstTable.gid = GroupJoin.gid'
+		)
+);
+$result = $this->FirstTable->find( 'all', array(
+		'joins' => array( $joins),
+		'fields' => array('FirstTable.*', 'GroupJoin.*'),
+		'order' => 'order_field asc',
+) );
+
+//-- DB: Delete a Record
+$this->YourModel->delete( _id_%|%);
+
+//-- DB: Delete Records
+$this->YourModel->deleteAll( array( __condition__%|%));
+
+//-- DB: Query
+$this->YourMoudel->query( $sql);
+
+//-- DB: Query without model
+$db = ConnectionManager::getDataSource( 'default');
+$db->rawQuery( "%|%");
+
+//-- Form: Create
+echo $this->Form->create(null, array(
+	'onsubmit'=>'return news_validate()', 
+	'class' => 'form-horizontal', 
+	'url' => "yoururl", 
+	'enctype'=>'multipart/form-data'
+));
+
+//-- Form: Input Text
+echo $this->Form->input( 'fieldname', array( 'label' => 'Field Name'));
+
+//-- Form: Input File
+echo $this->Form->input( 'fieldname', array( 'label' => 'Upload File', 'type' => 'file'));
+
+//-- Form: Submit
+echo $form->submit('Continue');
+
+//-- Form: End
+echo $this->Form->end();
+
+//-- Helper: import
+App::import('Helper', 'helper_name');
+
+//-- Request: Encode to JSON
+$var = $this->request->input('json_decode');
+
+//-- Request: Encode to XML
+$var = $this->request->input('Xml::build', array('return' => 'domdocument'));
+
+//-- Request: Passed arguments
+$var%|% = $this->request->params['named'];
+
+//-- Request: Querystring parameters
+$value = $this->request->query[ 'variablename'];
+
+//-- Request: Get Post Data
+$value = $this->request->data[ 'MyModel'][ 'variablename'];
+
+//-- Request: isGET
+if($this->request->is('get')) {
+	%|%
+}
+
+//-- Request: isPOST
+if($this->request->is('post')) {
+	%|%
+}
+
+//-- Sanitize: Clean
+$value = Sanitize::clean( $value);
+
+//-- Sanitize: Escape
+$value = Sanitize::escape( $value);
+
+//-- Sanitize: Paranoid
+$value = Sanitize::paranoid( $value);
+
+//-- Session: Read
+$var = $this->Session->read('%|%');
+
+//-- Session: Write
+$this->Session->write('var', 'value');
+
+//-- Session: Delete
+$this->Session->delete('var');
+
+//-- System: DB Log
+// from controller/model
+$db =& ConnectionManager::getDataSource( 'default');
+$db->showLog();die;
+
+//-- System: BaseURL
+$url = Router::url('/', true);
+
+//-- System: DebugLog
+$log = $this->YourModel->getDataSource()->getLog(false, false);
+debug($log);
+
+//-- System: Redirect
+$this->redirect(array('controller' => 'orders', 'action' => 'thanks'));
+
+//-- System: Redirect to website
+$this->redirect('%|%');
+
+//-- System: Referer
+$referer = $this->referer();
+
+//-- View: Insert CSS
+echo $this->Html->css('style');
+
+//-- View: Insert Javascript
+echo $this->Html->script('yourfile');
+
+//-- View: Layout
+$this->layout = 'layoutname';
+
+//-- View: Render from Controller
+$html = $this->render('yourpage%|%');
+$body = $html->body();
+
+//-- View: Set Variable
+$this->set( 'variablename%|%', $content );
+
+//-- View: SQL Dump
+echo $this->element('sql_dump');
+
+//-- Vendor: Import
+App::import('Vendor', 'your_vendor_name', array('file' => 'autoload.php'));
