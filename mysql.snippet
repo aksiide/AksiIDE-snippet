@@ -1,6 +1,4 @@
-
-
-SELECT * FROM tablename
+<?php
 
 //-- SELECT
 SELECT * FROM $table%|%;
@@ -25,3 +23,9 @@ UPDATE $table%|% SET $field='$value' WHERE id = $id;
 
 //-- DELETE
 DELETE FROM $table%|% WHERE id = $id; 
+
+//-- TimeStamp: UNIX_TIMESTAMP
+UNIX_TIMESTAMP( '%date%');
+
+//-- TimeStamp: FROM_UNIXTIME
+FROM_UNIXTIME( 1208946561);
