@@ -1,5 +1,11 @@
 <?php
 
+//-- Class: Add Class
+$('#YourID%|%').addClass("classname");
+
+//-- Class: Remove Class
+$('#YourID%|%').removeClass("classname");
+
 //-- Event: onDocumentReady
 <script type="text/javascript">
 jQuery(document).ready(function() {    
@@ -78,9 +84,11 @@ jqxhr.always(function() {
 });
 
 
-//-- attribut - get value
+//-- attribut: get attribut value
 s = $("#object-id%|%").attr('rel');
 
+//-- attribut: remove attribut
+jQuery('#object-id%|%').removeAttr('disabled');
 
 //-- each
 jQuery.each( VarArray, function(index, value) {

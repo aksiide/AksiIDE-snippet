@@ -1,7 +1,25 @@
 <?php
 
+//-- html5: isHTML5
+function isHTML5() {
+    var canvasEl = document.createElement('canvas');
+    if (!canvasEl.getContext) {
+        return false;
+    }
+    return true;
+}
+
+//-- Change URL at address bar (html5)
+window.history.pushState({"html": data}, "", url);
+
+//-- Other: SetTimeOut
+setTimeout(function() {
+    // your code%|%
+}, 3000);
+
+//-- Refresh URL;
+document.location.href = 'http://localhost/%|%';
+
 //-- View: Scroll To Top
 document.getElementById('div_id%|%').scrollIntoView();
 
-//-- View: Change URL (html5)
-window.history.pushState({"html": yourcontent}, "", url);		
