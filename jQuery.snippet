@@ -93,7 +93,7 @@ jqxhr.always(function() {
 
 
 //-- attribut: get attribut value
-s = $("#object-id%|%").attr('rel');
+s = $("#object-id%|%").attr('attributName');
 
 //-- attribut: remove attribut
 jQuery('#object-id%|%').removeAttr('disabled');
@@ -101,6 +101,18 @@ jQuery('#object-id%|%').removeAttr('disabled');
 //-- each
 jQuery.each( VarArray, function(index, value) {
 %|%
+});
+
+//-- Modal: before show
+$('YourID%|%').on('show.bs.modal', function(e) {
+    //$('divId').html('');
+});
+
+//-- Modal: shown
+$('YourID%|%').on('shown.bs.modal', function(e) {
+    var mainId = e.relatedTarget.id;
+    divID = '#' + mainId;
+    
 });
 
 //-- Scroll: Scroll To Top
