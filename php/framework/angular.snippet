@@ -1,5 +1,10 @@
 <?php
 
+//-- Init Controller
+.controller('YourCtrl', function($scope) {
+
+})
+
 //-- Base: Controller
 function YourController($scope, $http, $templateCache) {
 
@@ -72,6 +77,10 @@ request.success(
 		alert( data);
 	}
 );
+
+//-- Trigger: Trigger Click
+var el = document.getElementById('element_id');
+angular.element(el).triggerHandler('click');
 
 
 //-- View: Scroll to hash
