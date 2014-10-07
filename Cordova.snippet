@@ -29,6 +29,9 @@ fileTransfer.download( uriSource, fileTarget,
 //-- File: Get Store Path
 store = cordova.file.dataDirectory;
 
+//-- Net: Load URL
+navigator.app.loadUrl('yoururl%|%', { openExternal:true } );
+
 //-- System: Get Application Path
 var path = window.location.pathname;
 
