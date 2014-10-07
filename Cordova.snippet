@@ -1,0 +1,44 @@
+<?php
+
+//-- Event: Add Event Listener
+// event_type: deviceready, online, offline, backbutton, menubutton
+document.addEventListener("event_type", HandlerFunction, false);
+
+//-- File: Check Existing File
+window.resolveLocalFileSystemURL( fullFilePath, onFileExists, onFileNotExists);
+    function onFileExists( fileEntry)
+    {
+    }
+
+    function onFileNotExists( fileEntry)
+    {
+    }
+
+//-- File: Download File
+var fileTransfer = new FileTransfer();
+fileTransfer.download( uriSource, fileTarget,
+    function(entry) {
+        console.log("- download Success!");
+    },
+    function(err) {
+        console.log("- download Error");
+        console.dir(err);
+    }
+);
+
+//-- File: Get Store Path
+store = cordova.file.dataDirectory;
+
+//-- Net: Load URL
+navigator.app.loadUrl('yoururl%|%', { openExternal:true } );
+
+//-- System: Get Application Path
+var path = window.location.pathname;
+
+//-- System: Get Application Path (Function)
+function getPhoneGapPath() 
+{
+    var path = window.location.pathname;
+    path = path.substr( path, path.length - 10 );
+    return 'file://' + path;
+};
