@@ -12,7 +12,7 @@ function add_post_content($content) {
 }
 add_filter('the_content', 'add_post_content');
 
-//-- "Enter Title Here" placeholder
+//-- filter: add placeholder
 function change_default_title( $title ){
 	$screen = get_current_screen();
 	if  ( '_your_custom_post_type_' == $screen->post_type ) {
@@ -33,7 +33,7 @@ if (is_plugin_active('plugin-directory/plugin-file.php')) {
 }
 
 //-- date with wordpress default format
-$lsDate = date( get_option('date_format'), strtotime( $date ) );
+$result = date( get_option('date_format'), strtotime( $date ) );
 
 //-- get user id
 $my_user = ''; // can be $_GET['user'] or query_vars
