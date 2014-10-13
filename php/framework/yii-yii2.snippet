@@ -1,0 +1,27 @@
+<?php
+
+//-- View: Response
+$response = new yii\web\Response;
+$response->on('beforeSend', function ($event) {
+    // respond to the "beforeSend" event here
+});
+
+//-- Database: Query with Query Builder
+use yii\db\Query;
+use app\models\Customer;
+ 
+$customers = (new Query)->from('customer')
+    ->where(['status' => Customer::STATUS_ACTIVE])
+    ->orderBy('id')
+    ->all();
+    
+//-- Database: Query with Active Record
+use yii\db\Query;
+use app\models\Customer;
+
+$customers = Customer::find()
+    ->where(['status' => Customer::STATUS_ACTIVE])
+    ->orderBy('id')
+    ->asArray();
+    ->all();
+    
