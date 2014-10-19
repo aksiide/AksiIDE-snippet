@@ -38,13 +38,20 @@ store = cordova.file.dataDirectory;
 //-- Net: Load URL
 navigator.app.loadUrl('yoururl%|%', { openExternal:true } );
 
-//-- System: Get Application Path
+//-- Systems: Get Application Path
 var path = window.location.pathname;
 
-//-- System: Get Application Path (Function)
+//-- Systems: Get Application Path (Function)
 function getPhoneGapPath() 
 {
     var path = window.location.pathname;
     path = path.substr( path, path.length - 10 );
     return 'file://' + path;
 };
+
+//-- Systems: Disable Back Button
+document.addEventListener("backbutton", function (e) {
+    e.preventDefault();
+}, false );
+
+        
