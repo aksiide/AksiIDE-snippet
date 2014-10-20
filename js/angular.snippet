@@ -19,11 +19,11 @@ $scope.url = 'http://yoururl';
 $scope.code = null;
 $scope.response = null;
 $http({method: $scope.method, url: $scope.url, cache: $templateCache).
-	success(function(data, status) {
+	success(function(data, status, headers, config) {
 		$scope.status = status;
 		$scope.data = data;
 	}).
-	error(function(data, status) {
+	error(function(data, status, headers, config) {
 		$scope.data = data || "Request failed";
 		$scope.status = status;
 });
@@ -34,11 +34,11 @@ $scope.url = 'http://yoururl';
 $scope.code = null;
 $scope.response = null;
 $http({method: $scope.method, url: $scope.url, cache: $templateCache, headers: {'Authorization': 'Token token=xxxxYYYYZzzz'}).
-	success(function(data, status) {
+	success(function(data, status, headers, config) {
 		$scope.status = status;
 		$scope.data = data;
 	}).
-	error(function(data, status) {
+	error(function(data, status, headers, config) {
 		$scope.data = data || "Request failed";
 		$scope.status = status;
 });

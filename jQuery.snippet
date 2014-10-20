@@ -115,6 +115,15 @@ $('YourID%|%').on('shown.bs.modal', function(e) {
     
 });
 
+//-- Mobile: disable back button
+$(document).on('backbutton',
+    function(e){
+        e.preventDefault();
+        // YOUR CODE GOES HERE
+        %|%
+});
+
+
 //-- Scroll: Scroll To Top
 $('html, body').animate({scrollTop:0}, 'slow');
 		
