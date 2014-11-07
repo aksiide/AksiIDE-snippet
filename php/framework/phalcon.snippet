@@ -19,6 +19,24 @@ $aData = (array) $result[0];
 //-- DB: Check count
 $count = $result->count( );
 
+//-- Model: Find Data
+$result = YourModel::find( array(
+    'conditions' => 'your condition',
+    'columns' => 'fieldname1, fieldname2',
+    'order' => 'fieldname ASC',
+    'limit' => 10
+    )
+);
+
+//-- Model: Find Data with Query Builder
+$result = YourModel::query()
+    ->where("type = :type:")
+    ->andWhere("year < 2000")
+    ->bind(array("type" => "mechanical"))
+    ->order("name")
+    ->execute();
+    
+        
 //-- Model: Get config variable
 $var = $this->getDI()->get('config')->application['yourconfig'];
 
@@ -52,6 +70,9 @@ if ($this->request->isPost()) {%|%}
 //-- Request: isGet
 if ($this->request->isGet()) {%|%}
 	
+//-- Request: get Client IP Address
+$this->request->getClientAddress();
+
 //-- Response
 new Response('content%|%');
 	
