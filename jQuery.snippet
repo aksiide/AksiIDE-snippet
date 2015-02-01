@@ -27,7 +27,14 @@ jQuery( "#yourid").click( function() {
 jQuery('#yourid').change( function(){
 %|%
 });
-		
+
+//-- Event: onSubmit
+$('#yourId').on('submit', function(e){
+    e.preventDefault();
+    %|%    
+    
+});
+
 //-- Event: onWindowLoad
 jQuery(window).load(function(){  
 %|%
