@@ -27,7 +27,14 @@ jQuery( "#yourid").click( function() {
 jQuery('#yourid').change( function(){
 %|%
 });
-		
+
+//-- Event: onSubmit
+$('#yourId').on('submit', function(e){
+    e.preventDefault();
+    %|%    
+    
+});
+
 //-- Event: onWindowLoad
 jQuery(window).load(function(){  
 %|%
@@ -50,18 +57,22 @@ var request = jQuery.ajax({
 	url: 'yoursite',
 	type: "POST",
 	data: {id : menuId},
-	dataType: "json"
+	dataType: "json",
+    cache: false
 });
 request.fail(function(jqXHR, textStatus) {
 	alert( "Request failed: " + textStatus );
 });
 request.succeded(function(msg){
     //
-}
+});
 request.done(function(msg) {
 	alert( msg.data);
 	//jQuery("#log").html( msg );
 });
+
+//-- Http: Disable Cache
+$.ajaxSetup({ cache: false });
 
 //-- Http: Simple Load with GET
 $.get(url).done(function(data) {
@@ -72,7 +83,8 @@ $.get(url).done(function(data) {
 $.ajax({
 	type: "GET",
 	url: "test.js",
-	dataType: "script"
+	dataType: "script",
+    cache: false
 });
 
 //-- Http: Load content from URL
@@ -142,3 +154,8 @@ try {
 } catch (e) {
 	
 }
+
+//-- Others: Disable Ajax Cache
+$.ajaxSetup({
+    cache: false
+});

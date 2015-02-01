@@ -15,10 +15,34 @@ function isHTML5() {
 //-- Change URL at address bar (html5)
 window.history.pushState({"html": data}, "", url);
 
+//-- Function: Base64 Decode
+function b64_to_utf8( str ) {
+  return decodeURIComponent(escape(window.atob( str )));
+}
+
+
+//-- Function: isEmpty
+// For checking if a string is empty, null or undefined
+function isEmpty(str) {
+    return (!str || 0 === str.length);
+}
+
+//-- Function: isBlank
+// For checking if a string is blank, null or undefined I use:
+function isBlank(str) {
+    return (!str || /^\s*$/.test(str));
+}
+
 //-- Other: SetTimeOut
 setTimeout(function() {
     // your code%|%
 }, 3000);
+
+//-- Other: Sting Encode
+encodedData = window.btoa("Hello, world");
+
+//-- Other: String Decode
+decodedData = window.atob(encodedData);
 
 //-- Refresh URL
 document.location.href = 'http://localhost/%|%';
