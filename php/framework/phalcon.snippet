@@ -59,16 +59,29 @@ $this->flash->error((string) $message);
 return $this->_forward('url%|%');
 	
 //-- Request: Retrieve Get
-$var = $this->request->get("name", "string");
+$var = $this->request->get( 'name', array( 'striptags', 'string' ));
 	
 //-- Request: Retrieve POST
-$var = $this->request->getPost("name", "string");
+$var = $this->request->getPost( 'name', array( 'striptags', 'string' ));
 	
 //-- Request: isPost
 if ($this->request->isPost()) {%|%}
 	
 //-- Request: isGet
 if ($this->request->isGet()) {%|%}
+	
+//-- Request: is has File
+if ( !( $this->request->hasFiles( ) == true ) ) {
+    %|%
+}
+
+//-- Request: get uploaded Files
+foreach ( $this->request->getUploadedFiles( ) as $file ) {
+    //$fileInfo = pathinfo( $file->getName( ) );
+
+    //$file->moveTo( $targetFile );
+}
+
 	
 //-- Request: get Client IP Address
 $this->request->getClientAddress();
