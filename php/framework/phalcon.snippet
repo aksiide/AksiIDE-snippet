@@ -74,9 +74,6 @@ if ($this->request->isGet()) {%|%}
 if ( !( $this->request->hasFiles( ) == true ) ) {
     %|%
 }
-	
-//-- Request: get Client IP Address
-$this->request->getClientAddress();
 
 //-- Request: get uploaded Files
 foreach ( $this->request->getUploadedFiles( ) as $file ) {
@@ -85,6 +82,8 @@ foreach ( $this->request->getUploadedFiles( ) as $file ) {
     //$file->moveTo( $targetFile );
 }
 
+	
+//-- Request: get Client IP Address
 $this->request->getClientAddress();
 
 //-- Response
